@@ -1,6 +1,6 @@
 package controller
 
-import "sg-task/domain/models"
+import "github.com/vsyakunin/sg-task/domain/models"
 
 type Service interface {
 	GetAllTasks() ([]models.Task, error)

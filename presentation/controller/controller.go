@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"sg-task/application/service"
+	"github.com/vsyakunin/sg-task/application/service"
 
 	log "github.com/sirupsen/logrus"
 )

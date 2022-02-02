@@ -1,6 +1,6 @@
 package service
 
-import "sg-task/domain/models"
+import "github.com/vsyakunin/sg-task/domain/models"
 
 type Repo interface {
 	GetAllTasks() ([]models.Task, error)

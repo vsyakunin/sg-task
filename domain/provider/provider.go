@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	myerrs "sg-task/domain/models/errors"
+	myerrs "github.com/vsyakunin/sg-task/domain/models/errors"
 
 	log "github.com/sirupsen/logrus"
 )

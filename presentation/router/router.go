@@ -3,7 +3,7 @@ package router
 import (
 	"net/http"
 
-	"sg-task/presentation/controller"
+	"github.com/vsyakunin/sg-task/presentation/controller"
 
 	"github.com/gorilla/mux"
 )

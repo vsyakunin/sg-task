@@ -1,8 +1,8 @@
 package service
 
 import (
-	"sg-task/domain/models"
-	myerrs "sg-task/domain/models/errors"
+	"github.com/vsyakunin/sg-task/domain/models"
+	myerrs "github.com/vsyakunin/sg-task/domain/models/errors"
 
 	log "github.com/sirupsen/logrus"
 )

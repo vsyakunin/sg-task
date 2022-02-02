@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"time"
 
-	"sg-task/application/service"
-	"sg-task/domain/provider"
-	"sg-task/domain/repository"
-	"sg-task/presentation/controller"
-	"sg-task/presentation/router"
+	"github.com/vsyakunin/sg-task/application/service"
+	"github.com/vsyakunin/sg-task/domain/provider"
+	"github.com/vsyakunin/sg-task/domain/repository"
+	"github.com/vsyakunin/sg-task/presentation/controller"
+	"github.com/vsyakunin/sg-task/presentation/router"
 
 	log "github.com/sirupsen/logrus"
 )

@@ -1,6 +1,6 @@
 package repository
 
-import "sg-task/domain/models"
+import "github.com/vsyakunin/sg-task/domain/models"
 
 type Repo struct{}
 
