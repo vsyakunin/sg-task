@@ -3,7 +3,7 @@ package router
 import (
 	"net/http"
 
-	"github.com/vsyakunin/sg-task/presentation/controller"
+	"sg-task/presentation/controller"
 
 	"github.com/gorilla/mux"
 )
@@ -23,6 +23,15 @@ func NewRouter(cont *controller.Controller) *mux.Router {
 			PathPrefix(apiVer).
 			Path("/tasks").
 			Handler(http.HandlerFunc(cont.GetAllTasks))
+	}
+
+	{
+		const routeName = "getTaskHistory"
+		router.Methods(http.MethodGet).
+			Name(routeName).
+			PathPrefix(apiVer).
+			Path("/tasks/{taskID}/history").
+			Handler(http.HandlerFunc(cont.GetTaskHistory))
 	}
 
 	return router

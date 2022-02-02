@@ -4,9 +4,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/vsyakunin/sg-task/application/service"
-	"github.com/vsyakunin/sg-task/presentation/controller"
-	"github.com/vsyakunin/sg-task/presentation/router"
+	"sg-task/application/service"
+	"sg-task/domain/repository"
+	"sg-task/presentation/controller"
+	"sg-task/presentation/router"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -14,7 +15,8 @@ import (
 const httpTimeout = 30 * time.Second
 
 func main() {
-	svc := service.NewService()
+	repo := repository.NewRepository()
+	svc := service.NewService(repo)
 	cont := controller.NewController(svc)
 
 	router := router.NewRouter(cont)
