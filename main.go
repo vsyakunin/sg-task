@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"sg-task/application/service"
+	"sg-task/domain/provider"
 	"sg-task/domain/repository"
 	"sg-task/presentation/controller"
 	"sg-task/presentation/router"
@@ -16,7 +17,8 @@ const httpTimeout = 30 * time.Second
 
 func main() {
 	repo := repository.NewRepository()
-	svc := service.NewService(repo)
+	prov := provider.NewProvider()
+	svc := service.NewService(repo, prov)
 	cont := controller.NewController(svc)
 
 	router := router.NewRouter(cont)

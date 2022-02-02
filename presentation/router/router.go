@@ -34,5 +34,14 @@ func NewRouter(cont *controller.Controller) *mux.Router {
 			Handler(http.HandlerFunc(cont.GetTaskHistory))
 	}
 
+	{
+		const routeName = "downloadFileFromMessage"
+		router.Methods(http.MethodGet).
+			Name(routeName).
+			PathPrefix(apiVer).
+			Path("/messages/{messageID}/file").
+			Handler(http.HandlerFunc(cont.DownloadFileFromMessage))
+	}
+
 	return router
 }

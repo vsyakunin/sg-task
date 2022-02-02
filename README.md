@@ -58,13 +58,13 @@ This endpoint is used to get a list of all tasks.
 ]
 ```
 
-### <a name="2.2">2.3 Get task history</a>
+### <a name="2.2">2.2 Get task history</a>
 
 This endpoint is used to receive chat history for a task.
 
 **URL:**
 
-&emsp;`.../api/v1/tasks/{taskId}/history`
+&emsp;`.../api/v1/tasks/{taskID}/history`
 
 **METHOD: GET**
 
@@ -91,6 +91,27 @@ This endpoint is used to receive chat history for a task.
     ...
 ]
 ```
+
+### <a name="2.3">2.3 Download file attached to message</a>
+
+This endpoint is used to download file attached to message.
+
+**URL:**
+
+&emsp;`.../api/v1/messages/{messageID}/history`
+
+**METHOD: GET**
+
+**URL parameters:**  
+&emsp;`messageID` - *int, id of a message*
+
+**Status codes:**  
+&emsp;`200` - OK,  
+&emsp;`400` - bad request (invalid request body)  
+&emsp;`500` - server error,
+
+**Response Body**  
+The file that was attached to the message or nothing if there was no file attached.
 
 ## <a name="3">3. Requirements</a>
 

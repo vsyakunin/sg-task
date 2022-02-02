@@ -45,6 +45,6 @@ var MessageFour = Message{
 	TaskID:     2,
 	FromUserID: 3,
 	Text:       "message four",
-	FileKey:    "filefour.txt",
+	FileKey:    "",
 	Created:    time.Now(),
 }

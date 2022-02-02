@@ -11,23 +11,21 @@ import (
 )
 
 const (
-	taskIDParam = "taskID"
-
 	paramNotFoundErr = "url parameter %s not found"
 	paramParseErr    = "parameter parsing error"
 )
 
-func extractID(r *http.Request) (*int64, error) {
-	taskIDStr, ok := mux.Vars(r)[taskIDParam]
+func extractID(r *http.Request, idType string) (*int64, error) {
+	idStr, ok := mux.Vars(r)[idType]
 	if !ok {
-		err := fmt.Errorf(paramNotFoundErr, taskIDParam)
+		err := fmt.Errorf(paramNotFoundErr, idType)
 		return nil, myerrs.NewBusinessError(paramParseErr, err)
 	}
 
-	taskID, err := strconv.ParseInt(taskIDStr, 10, 64)
+	id, err := strconv.ParseInt(idStr, 10, 64)
 	if err != nil {
 		return nil, myerrs.NewBusinessError(paramParseErr, err)
 	}
 
-	return &taskID, nil
+	return &id, nil
 }

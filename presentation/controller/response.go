@@ -12,7 +12,21 @@ import (
 
 const (
 	jsonEncodeErr = "error while encoding JSON"
+	responseErr   = "error while writing a response"
 )
+
+func writeFileResponse(w http.ResponseWriter, path string, file []byte) bool {
+	w.WriteHeader(http.StatusOK)
+
+	if _, err := w.Write(file); err != nil {
+		log.Error(getLogMessage(err, path))
+		err = myerrs.NewServerError(responseErr, err)
+		writeErrorResponse(w, err, path)
+		return false
+	}
+
+	return true
+}
 
 func writeJSONResponse(w http.ResponseWriter, path string, records interface{}) bool {
 	if records == nil {
@@ -56,7 +70,6 @@ func writeErrorResponse(w http.ResponseWriter, errsResponse error, instance stri
 	} else {
 		statusCode = http.StatusInternalServerError
 	}
-
 
 	http.Error(w, string(errStr), statusCode)
 }
