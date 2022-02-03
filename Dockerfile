@@ -11,5 +11,6 @@ FROM scratch
 COPY --from=builder etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /build/main /
 COPY --from=builder /build/data /data
+COPY --from=builder /build/config.toml /
 
 ENTRYPOINT ["./main"]
