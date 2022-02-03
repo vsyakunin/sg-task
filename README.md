@@ -5,7 +5,7 @@ This is a simple tasks API. It is fully dockerized.
 ## Table of contents
 
 **[1 Response Data format](#1)**   
-**[2 Authorization](#2)**
+**[2 Authorization](#2)**  
 **[3 API](#3)**   
 &emsp;**[3.1 Get all tasks](#3.1)**  
 &emsp;**[3.2 Get task history](#3.2)**  
