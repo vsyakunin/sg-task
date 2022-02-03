@@ -42,7 +42,7 @@ var MessageThree = Message{
 
 var MessageFour = Message{
 	ID:         4,
-	TaskID:     2,
+	TaskID:     3,
 	FromUserID: 3,
 	Text:       "message four",
 	FileKey:    "",

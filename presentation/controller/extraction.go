@@ -29,3 +29,8 @@ func extractID(r *http.Request, idType string) (*int64, error) {
 
 	return &id, nil
 }
+
+func extractUserLogin(r *http.Request) *string {
+	login, _, _ := r.BasicAuth()
+	return &login
+}

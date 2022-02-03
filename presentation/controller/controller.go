@@ -23,13 +23,13 @@ func NewController(svc Service) *Controller {
 func (c *Controller) GetAllTasks(w http.ResponseWriter, r *http.Request) {
 	const funcName = "controller.GetAllTasks"
 
-	hallLayout, err := c.Svc.GetAllTasks()
+	tasks, err := c.Svc.GetAllTasks(extractUserLogin(r))
 	if err != nil {
 		writeErrorResponse(w, err, r.URL.Path)
 		return
 	}
 
-	if !writeJSONResponse(w, r.URL.Path, hallLayout) {
+	if !writeJSONResponse(w, r.URL.Path, tasks) {
 		log.Errorf("%s: %s", funcName, writerErr)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
@@ -44,7 +44,7 @@ func (c *Controller) GetTaskHistory(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	taskHistory, err := c.Svc.GetTaskHistory(taskID)
+	taskHistory, err := c.Svc.GetTaskHistory(taskID, extractUserLogin(r))
 	if err != nil {
 		writeErrorResponse(w, err, r.URL.Path)
 		return
@@ -65,7 +65,7 @@ func (c *Controller) DownloadFileFromMessage(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	file, err := c.Svc.DownloadFileFromMessage(msgID)
+	file, err := c.Svc.DownloadFileFromMessage(msgID, extractUserLogin(r))
 	if err != nil {
 		writeErrorResponse(w, err, r.URL.Path)
 		return

@@ -4,13 +4,14 @@ This is a simple tasks API. It is fully dockerized.
 
 ## Table of contents
 
-**[1 Response Data format](#1)**      
-**[2 API](#2)**   
-&emsp;**[2.1 Get all tasks](#2.1)**  
-&emsp;**[2.2 Get task history](#2.2)**  
-&emsp;**[2.3 Download file attached to message](#2.3)**  
-**[3 Requirements](#3)**  
-**[4 Deploy](#4)**
+**[1 Response Data format](#1)**   
+**[2 Authorization](#2)**
+**[3 API](#3)**   
+&emsp;**[3.1 Get all tasks](#3.1)**  
+&emsp;**[3.2 Get task history](#3.2)**  
+&emsp;**[3.3 Download file attached to message](#3.3)**  
+**[4 Requirements](#4)**  
+**[5 Deploy](#5)**
 
 ****
 <a name="1">1. Response data format</a>
@@ -26,9 +27,18 @@ This is a simple tasks API. It is fully dockerized.
 ```
 
 ****
-## <a name="2">2. API</a>
+<a name="2">2. Authorization</a>
+-  
+**Authorization:** Basic Auth  
 
-### <a name="2.1">2.1 Get all tasks</a>
+In this task we implement role based access control with basic auth in sake of simplicity.  
+Although there're some libraries providing a better way of handling RBAC.  
+For example casbin: https://github.com/casbin/casbin
+
+****
+## <a name="3">3. API</a>
+
+### <a name="3.1">3.1 Get all tasks</a>
 
 This endpoint is used to get a list of all tasks.
 
@@ -58,7 +68,7 @@ This endpoint is used to get a list of all tasks.
 ]
 ```
 
-### <a name="2.2">2.2 Get task history</a>
+### <a name="3.2">3.2 Get task history</a>
 
 This endpoint is used to receive chat history for a task.
 
@@ -92,7 +102,7 @@ This endpoint is used to receive chat history for a task.
 ]
 ```
 
-### <a name="2.3">2.3 Download file attached to message</a>
+### <a name="3.3">3.3 Download file attached to message</a>
 
 This endpoint is used to download file attached to message.
 
@@ -113,12 +123,12 @@ This endpoint is used to download file attached to message.
 **Response Body**  
 The file that was attached to the message or nothing if there was no file attached.
 
-## <a name="3">3. Requirements</a>
+## <a name="4">4. Requirements</a>
 
 &emsp; `docker`  
 &emsp; `docker-compose`
 
-## <a name="4">4. Deploy</a>
+## <a name="5">5. Deploy</a>
 
 1. Clone this repository.
 2. Create container with `docker-compose -f docker-compose.yml up -d`

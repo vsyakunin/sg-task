@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
+	"github.com/vsyakunin/sg-task/application/service"
 	myerrs "github.com/vsyakunin/sg-task/domain/models/errors"
 
 	log "github.com/sirupsen/logrus"
@@ -63,7 +65,11 @@ func writeErrorResponse(w http.ResponseWriter, errsResponse error, instance stri
 	if ok {
 		switch typedErr.Level {
 		case myerrs.Business:
-			statusCode = http.StatusBadRequest
+			if strings.EqualFold(typedErr.Title, service.AccessErr) {
+				statusCode = http.StatusForbidden
+			} else {
+				statusCode = http.StatusBadRequest
+			}
 		default:
 			statusCode = http.StatusInternalServerError
 		}

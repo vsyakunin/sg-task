@@ -1,0 +1,10 @@
+[Auth]
+  [Auth.UserOne]
+    Login = "userone"
+    Password = "userone"
+  [Auth.UserTwo]
+    Login = "usertwo"
+    Password = "usertwo"
+  [Auth.Operator]
+    Login = "operator"
+    Password = "operator"

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/vsyakunin/sg-task/presentation/controller"
+	mw "github.com/vsyakunin/sg-task/presentation/middlewares"
 
 	"github.com/gorilla/mux"
 )
@@ -43,5 +44,6 @@ func NewRouter(cont *controller.Controller) *mux.Router {
 			Handler(http.HandlerFunc(cont.DownloadFileFromMessage))
 	}
 
+	router.Use(mw.BasicAuthMiddleware)
 	return router
 }
